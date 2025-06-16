@@ -1,4 +1,4 @@
-import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 import { mockData } from '../../shared';
@@ -15,11 +15,11 @@ export type Todo = {
 export class TodoService {
   public todos$ = new BehaviorSubject<Todo[]>([]);
 
-  initApi() {
+  initApi(): void {
     this.todos$.next(mockData);
   }
 
-  addTodo(text: string) {
+  addTodo(text: string): void {
     const current = this.todos$.getValue();
     const newTodo: Todo = {
       id: Date.now(),
@@ -29,14 +29,25 @@ export class TodoService {
     this.todos$.next([newTodo, ...current]);
   }
 
-  removeTodo(id: number) {
-    const current = this.todos$.getValue();
-    this.todos$.next(current.filter((t) => t.id !== id));
+  removeTodo(id: number): void {
+    const current: Todo[] = this.todos$.getValue();
+    this.todos$.next(current.filter((t: Todo) => t.id !== id));
   }
 
-  toggleStatus(id: number) {
-    const current = this.todos$.getValue();
-    const updated = current.map((todo: Todo) => {
+  editTodo(id: number, text: string): void {
+    const current: Todo[] = this.todos$.getValue();
+    const updated: Todo[] = current.map((todo: Todo): Todo => {
+      if (todo.id === id) {
+        return { ...todo, text };
+      }
+      return todo;
+    });
+    this.todos$.next(updated);
+  }
+
+  toggleStatus(id: number): void {
+    const current: Todo[] = this.todos$.getValue();
+    const updated: Todo[] = current.map((todo: Todo): Todo => {
       if (todo.id === id) {
         const nextStatus: TodoStatus =
           todo.status === 'todo'

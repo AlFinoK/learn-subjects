@@ -51,13 +51,15 @@ body {
   flex-direction: column;
   gap: 10px;
 }
+
 .toast-success {
   background-color: green;
   padding: 4px 12px;
   border-radius: 10px;
 }
+
 .my-toast-area {
   position: absolute;
   top: 20px;
-  right: 20%;
+  right: 320px;
 }

@@ -3,10 +3,20 @@
   <li class="item" [class]="todo.status">
     <div class="inner">
       <div class="left">
+        @if (editingId === todo.id) {
+        <input class="input" name="text" [(ngModel)]="editingText" />
+        } @else {
         {{ todo.text }}
         <span class="status">({{ todo.status }})</span>
+        }
       </div>
       <div class="right">
+        @if (editingId === todo.id) {
+        <button class="saveBtn" (click)="saveEdit(todo.id)">Save</button>
+        } @else {
+        <button class="editBtn" (click)="editTodoMode(todo)">Edit</button>
+        }
+
         <button class="updateBtn" (click)="changeStatus(todo.id)">⟳</button>
         <button class="btn" (click)="removeTodo(todo.id)">✖</button>
       </div>

@@ -28,7 +28,7 @@ export class TodoComponent {
     private _todoService: TodoService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this._toastr.overlayContainer = this.toastContainer;
     this._todoService.initApi();
   }

@@ -2,7 +2,7 @@ import { Component, signal, WritableSignal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { TodoService } from './todo.service';
+import { Todo, TodoService } from './todo.service';
 
 @Component({
   selector: 'app-todo-form',
@@ -12,14 +12,14 @@ import { TodoService } from './todo.service';
   styleUrls: ['./todo-form.component.scss'],
 })
 export class TodoFormComponent {
-  text: WritableSignal<string> = signal('');
+  protected text: string = '';
 
   constructor(private _todoService: TodoService) {}
 
-  addTodo() {
-    const trimmed = this.text().trim();
+  protected addTodo(): void {
+    const trimmed: string = this.text.trim();
     if (!trimmed) return;
     this._todoService.addTodo(trimmed);
-    this.text.set('');
+    this.text = '';
   }
 }

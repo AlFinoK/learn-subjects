@@ -1,9 +1,9 @@
 <form class="form">
   <input
     class="input"
-    (input)="text.set($any($event.target).value)"
-    [value]="text()"
-    placeholder="Новая задача"
+    name="text"
+    [(ngModel)]="text"
+    placeholder="Новая тудушка"
   />
   <button class="btn" (click)="addTodo()">Добавить</button>
 </form>
