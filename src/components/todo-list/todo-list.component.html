@@ -1,0 +1,16 @@
+<ul class="list">
+  @for (todo of todos(); track todo.id) {
+  <li class="item" [class]="todo.status">
+    <div class="inner">
+      <div class="left">
+        {{ todo.text }}
+        <span class="status">({{ todo.status }})</span>
+      </div>
+      <div class="right">
+        <button class="updateBtn" (click)="changeStatus(todo.id)">⟳</button>
+        <button class="btn" (click)="removeTodo(todo.id)">✖</button>
+      </div>
+    </div>
+  </li>
+  }
+</ul>

@@ -1,0 +1,66 @@
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 40px;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.btn,
+.updateBtn {
+  background-color: rgb(198, 2, 2);
+  color: white;
+  padding: 2px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  font-size: 12px;
+  transition: background-color 0.2s ease-in;
+  &:hover {
+    background-color: rgb(132, 0, 0);
+  }
+}
+
+.updateBtn {
+  background-color: rgb(202, 186, 0);
+
+  &:hover {
+    background-color: rgb(161, 147, 0);
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left {
+  font-size: 14px;
+  line-height: 130%;
+  font-weight: 400;
+  padding: 8px 16px;
+  border-radius: 6px;
+  min-width: 250px;
+}
+
+.item.inProgress .left {
+  background-color: orange;
+}
+
+.item.done .left {
+  background-color: green;
+  text-decoration: line-through;
+}
